@@ -3,12 +3,11 @@ import ReactDOM from "react-dom";
 
 const App = (props) => {
   const [selected, setSelected] = useState(0);
-  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0));
+  const [votes, setVotes] = useState(new Array(props.anecdotes.length).fill(0));
 
   const random = () => {
-    const rnd = Math.floor(Math.random() * anecdotes.length);
+    const rnd = Math.floor(Math.random() * props.anecdotes.length);
     setSelected(rnd);
-
     console.log(rnd);
   };
 
@@ -20,10 +19,16 @@ const App = (props) => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{props.anecdotes[selected]}</p>
       <p>has {votes[selected]} votes</p>
+
       <button onClick={vote}>vote</button>
       <button onClick={random}>Random</button>
+
+      <h1>Anecdote with most votes</h1>
+      <p>{props.anecdotes[votes.indexOf(Math.max(...votes))]}</p>
+      <p>has {Math.max(...votes)} votes</p>
     </div>
   );
 };
