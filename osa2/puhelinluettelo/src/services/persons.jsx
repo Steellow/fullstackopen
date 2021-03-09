@@ -11,7 +11,15 @@ const create = (newObject) => {
   return promise.then((res) => res.data);
 };
 
-export default {
+const deletePerson = (id) => {
+  console.log("Deleting " + id);
+  axios.delete(baseUrl + "/" + id);
+};
+
+// Creating object before exporting to avoid: 'Warning : Assign object to a variable before exporting as module default'
+const exportObject = {
   getAll,
   create,
+  deletePerson,
 };
+export default exportObject;

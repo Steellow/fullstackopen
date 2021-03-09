@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import PersonList from "./components/PersonList";
-import axios from "axios";
 import personService from "./services/persons";
 
 const App = () => {
@@ -31,6 +30,13 @@ const App = () => {
     }
   };
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure?")) {
+      personService.deletePerson(id);
+      setPersons(persons.filter((person) => person.id !== id));
+    }
+  };
+
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };
@@ -56,7 +62,7 @@ const App = () => {
         onNumberChange={handleNumberChange}
       />
       <h2>Numbers</h2>
-      <PersonList persons={persons} filter={filter} />
+      <PersonList persons={persons} filter={filter} handleDelete={handleDelete} />
     </div>
   );
 };
