@@ -25,12 +25,18 @@ const App = () => {
       if (window.confirm("Person is already added to the phonebook, do you want to replace the old number with a new one?")) {
         const oldPerson = persons.find((person) => person.name === newName);
         const updatedPerson = { ...oldPerson, number: newNumber };
-        personService.replace(updatedPerson).then((returnedObject) => {
-          setPersons(persons.map((person) => (person === oldPerson ? returnedObject : person)));
-          showNotification(`Modified ${newName}`, "green");
-          setNewName("");
-          setNewNumber("");
-        });
+        personService
+          .replace(updatedPerson)
+          .then((returnedObject) => {
+            setPersons(persons.map((person) => (person === oldPerson ? returnedObject : person)));
+            showNotification(`Modified ${newName}`, "green");
+            setNewName("");
+            setNewNumber("");
+          })
+          .catch((error) => {
+            showNotification(`Information of ${newName} has already been removed from server`, "red");
+            setPersons(persons.filter((person) => person.name !== newName));
+          });
       }
     } else {
       const newPerson = { name: newName, number: newNumber };

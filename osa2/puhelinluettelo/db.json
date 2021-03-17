@@ -1,39 +1,14 @@
 {
   "persons": [
     {
-      "name": "asdfasdf",
-      "number": "123",
-      "id": 13
-    },
-    {
-      "name": "asdfasdfa",
-      "number": "123",
-      "id": 14
-    },
-    {
-      "name": "asdf1",
-      "number": "111",
-      "id": 17
-    },
-    {
-      "name": "c4",
-      "number": "c4",
-      "id": 18
+      "name": "asdf",
+      "number": "321",
+      "id": 3
     },
     {
       "name": "Hannes Kinnunen",
-      "number": "000",
-      "id": 19
-    },
-    {
-      "name": "c",
-      "number": "1",
-      "id": 20
-    },
-    {
-      "name": "cc",
-      "number": "",
-      "id": 21
+      "number": "170321",
+      "id": 4
     }
   ]
 }
